@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SimpleBottomNavigation from "./components/navigation";
+import BasicSimpleTreeView from "./components/simpleTreeView";
+import ResponsiveAppBar from "./components/appBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SimpleBottomNavigation />
+        <ResponsiveAppBar />
         {children}
       </body>
     </html>
