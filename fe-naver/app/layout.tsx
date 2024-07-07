@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import SimpleBottomNavigation from "./components/navigation";
-import BasicSimpleTreeView from "./components/simpleTreeView";
 import ResponsiveAppBar from "./components/appBar";
+import Grid from "@mui/material/Grid";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +19,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ResponsiveAppBar />
-        {children}
+      <Grid container spacing={1}>
+          <Grid xs={12}>
+            <ResponsiveAppBar />
+          </Grid>
+          <Grid sm={12}>
+              sideBar22
+          </Grid>
+          <Grid xs={12}>
+              {children}
+          </Grid>
+      </Grid>
       </body>
     </html>
   );

@@ -16,14 +16,15 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
+import { useRouter } from "next/navigation";
 
 const pages = ['신규오픈', '메가인플', '기자단', '유튜브', '숏폼', '지도보기'];
-// const pages = {
+// const pages: Record<string, string> = {
 //     '신규오픈': '/new',
 //     '메가인플': '/superior',
 //     '기자단': '/campaign',
 //     '유튜브': '/youtube',
-//     '숏폼': 'shortform',
+//     '숏폼': '/shortform',
 //     '지도보기': '/map'};
 const settings = ['커뮤니티', '고객센터', '로그인', '회원가입'];
 
@@ -45,6 +46,7 @@ function ResponsiveAppBar() {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+  const router = useRouter();
 
   const Search = styled('div')(({theme}) => ({
     position: 'relative',
@@ -88,7 +90,9 @@ function ResponsiveAppBar() {
     },
   }));
 
-  return (
+
+  // @ts-ignore
+    return (
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
@@ -140,11 +144,14 @@ function ResponsiveAppBar() {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-                {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              {/*  {pages.map((page) => (*/}
+              {/*  <MenuItem key={page} onClick={handleCloseNavMenu}>*/}
+              {/*    <Typography textAlign="center">{page}</Typography>*/}
+              {/*  </MenuItem>*/}
+              {/*))}*/}
+              {<MenuItem key={'신규오픈'} onClick={handleOpenNavMenu}>
+                <Typography textAlign="center">신규오픈</Typography>
+              </MenuItem>}
             </Menu>
           </Box>
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
@@ -152,7 +159,7 @@ function ResponsiveAppBar() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },
@@ -164,18 +171,39 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            리뷰
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            {/*{pages.map((page) => (*/}
+            {/*  <Button*/}
+            {/*    key={page}*/}
+            {/*    onClick={handleCloseNavMenu}*/}
+            {/*    sx={{ my: 2, color: 'white', display: 'block' }}*/}
+            {/*  >*/}
+            {/*    {page}*/}
+            {/*  </Button>*/}
+            {/*))}*/}
+            <Button
+              key='신규오픈'
+              onClick={()=>router.push("/new")}
+              sx={{ my: 2, color: 'white', display: 'block'}}
+            >
+              신규오픈
+            </Button>
+            <Button
+                key='게시판'
+                onClick={()=>router.push("/board")}
+                sx={{ my: 2, color: 'white', display: 'block'}}
+            >
+              게시판
+            </Button>
+            <Button
+                key='로그인'
+                onClick={()=>router.push("/user/login")}
+                sx={{ my: 2, color: 'white', display: 'block'}}
+            >
+              로그인
+            </Button>
           </Box>
 
           <Search>

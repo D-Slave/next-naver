@@ -40,7 +40,7 @@ export default function BasicTabs() {
 //   };
 
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%', marginTop:'100px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs aria-label="basic tabs example">
           <Tab label="Item One" {...a11yProps(0)} />
