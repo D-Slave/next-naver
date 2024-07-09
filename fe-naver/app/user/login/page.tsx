@@ -3,6 +3,7 @@ import * as React from "react";
 import LoginForm from "@/app/components/LoginForm";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
+import LoginForm2 from "@/app/components/LoginForm2";
 
 
 export default function Page() {
@@ -10,19 +11,7 @@ export default function Page() {
         console.log('form', form);
     }
     return (
-        // <Container maxWidth="sm">
-            <Box
-                height={200}
-                width={200}
-                my={4}
-                display="flex"
-                alignItems="center"
-                gap={4}
-                p={2}
-                sx={{ border: '2px solid grey' }}
-            >
-                <LoginForm onSubmit={onSubmit} />
-            </Box>
-        //</Container>
+        // <LoginForm onSubmit={onSubmit} />
+        <LoginForm2 />
     )
 }
