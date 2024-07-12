@@ -20,14 +20,18 @@ import MailIcon from '@mui/icons-material/Mail';
 import AdbIcon from "@mui/icons-material/Adb";
 import {useRouter} from "next/navigation";
 
-export default function SideBar() {
+export default function SideBar({
+    children,
+                                }: {
+    children: React.ReactNode;
+}) {
     const router = useRouter();
 
     const drawerWidth = 240;
     const MenuList = [
         {
             text: '신규오픈',
-            url: '/'
+            url: '/new_campaign'
         },
         {
             text: '게시판',
@@ -126,6 +130,11 @@ export default function SideBar() {
                     </List>
                 </Box>
             </Drawer>
+            <Box component="main" sx={{ flexGrid: 1, p: 3}}>
+                <Box className="container">
+                    {children}
+                </Box>
+            </Box>
         </Box>
     )
 }

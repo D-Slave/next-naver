@@ -1,4 +1,3 @@
-"use client"
 import * as React from "react";
 import LoginForm2 from "@/app/components/LoginForm2";
 

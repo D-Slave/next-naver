@@ -4,6 +4,7 @@ import "./globals.css";
 import ResponsiveAppBar from "./components/appBar";
 import Grid from "@mui/material/Grid";
 import SideBar from "@/app/components/sideBar";
+import NavBar from "@/app/components/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,14 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <Grid container spacing={1}>
-          <Grid xs={12}>
-            <SideBar />
-              {/*<ResponsiveAppBar />*/}
-          </Grid>
-          {children}
-
-      </Grid>
+        <SideBar children={children} />
       </body>
     </html>
   );
