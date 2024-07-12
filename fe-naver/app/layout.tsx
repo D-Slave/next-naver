@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ResponsiveAppBar from "./components/appBar";
 import Grid from "@mui/material/Grid";
+import SideBar from "@/app/components/sideBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,7 +21,8 @@ export default function RootLayout({
       <body>
       <Grid container spacing={1}>
           <Grid xs={12}>
-            <ResponsiveAppBar />
+            <SideBar />
+              {/*<ResponsiveAppBar />*/}
           </Grid>
           {children}
 
