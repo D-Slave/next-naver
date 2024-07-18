@@ -9,6 +9,7 @@ import {styled} from "@mui/material/styles";
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import React, {useEffect, useRef, useState} from "react";
+import {ImageList, ImageListItem} from "@mui/material";
 
 const VisuallyHiddenInput = styled('input')({
     clip: 'rect(0 0 0 0)',
@@ -22,74 +23,54 @@ const VisuallyHiddenInput = styled('input')({
     width: 1,
 });
 
-// // const [preview, setPreview] = useState<string | null>("");
-// const [images, setImages] = useState<string[]>([]);
-// const handleFileUpload = () => {
-//     // if (e.target.files !== null) {
-//     //     const file = e.target.files[0];
-//     //     if (file && file.type.substring(0, 5) === "image") {
-//     //         setImgFile(file);
-//     //     } else {
-//     //         setImgFile(null)
-//     //     }
-//     // }
-//
-//     const fileRef = useRef<HTMLInputElement>(null);
-//     const handleChange = (e: React.ChangeEvent) => {
-//         const targetFiles = (e.target as HTMLInputElement).files as FileList;
-//         const targetFilesArray = Array.from(targetFiles);
-//         const selectedFiles: string[] = targetFilesArray.map((file)=> {
-//             return URL.createObjectURL(file);
-//         });
-//         setImages((prev)=> prev.concat(selectedFiles));
-//     }
-//     return (
-//         <>
-//             {images.map((url, i)=> (
-//                 <div key={url}>
-//                     <input src={url} alt={`image${i}`}
-//                 </div>
-//             ))}
-//         </>
-//     );
-// };
-//
-// const handleClick = () => {
-//     fileRef?.current?.click();
-// }
-
-
-// useEffect(()=> {
-//     if (imgFile) {
-//         const reader = new FileReader();
-//         reader.onloadend = () => {
-//             setPreview(reader.result as string);
-//         };
-//         reader.readAsDataURL(imgFile);
-//     } else {
-//         setPreview(null);
-//     }
-// }, [imgFile]);
-
 export default function LoadImage() {
+    const [ images, setImages ] = useState<string[]>([]);
+    const fileRef = useRef<HTMLInputElement>(null);
+    const handleClick = () => {
+        fileRef?.current?.click();
+    }
+    const handleChange = (e: React.ChangeEvent) => {
+        const targetFiles = (e.target as HTMLInputElement).files as FileList;
+        const targetFilesArray = Array.from(targetFiles);
+        const selectedFiles: string[] = targetFilesArray.map((file)=> {
+            return URL.createObjectURL(file);
+        });
+        console.log('files',selectedFiles);
+        setImages((prev: any) => prev.concat(selectedFiles));
+    }
     return (
         <Card>
             <CardHeader title="load image" />
             <Divider />
             <CardContent>
                 <Grid container spacing={6} wrap="wrap">
-                    <Button
-                        component="label"
-                        role={undefined}
-                        variant="contained"
-                        tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}
-                    >
-                        Upload file
-                        <VisuallyHiddenInput type="file"/>
-                        {/*<input type="file" ref={handleFileUpload} />*/}
-                    </Button>
-                    {/*<img src={preview as string}  alt=""/>*/}
+                    <Grid md={2} sm={6} xs={12}>
+                        <Button
+                            component="label"
+                            role={undefined}
+                            variant="contained"
+                            tabIndex={-1}
+                            startIcon={<CloudUploadIcon />}
+                        >
+                            Upload file
+                            <VisuallyHiddenInput type="file" onClick={handleClick} onChange={handleChange} ref={fileRef} />
+                            {/*<input type="file" ref={handleFileUpload} />*/}
+                        </Button>
+                    </Grid>
+                    <Grid md={10} sm={6} xs={12}>
+                        <ImageList sx={{
+                            width: 500,
+                            height: 500}} cols={1}>
+                            {images.map((image, index) => (
+                                <ImageListItem key={image}>
+                                    <img
+                                        src={image}
+                                        alt={`image${index}`}/>
+                                </ImageListItem>
+                            ))}
+                        </ImageList>
+                    </Grid>
+
                 </Grid>
             </CardContent>
         </Card>

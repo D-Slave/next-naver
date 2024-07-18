@@ -30,15 +30,8 @@ const loraList = [
 
 export function TextToImagePrompt() {
     return (
-        <form
-            onSubmit={(event)=> {
-                event.preventDefault();
-            }}
-        >
-                <CardHeader subheader="Text To Image Generation" title="Text To Image" />
-                <CardActions sx={{ justifyContent: 'flex-start' }}>
-                    <Button variant="contained">Add Lora</Button>
-                </CardActions>
+        <Card>
+                <CardHeader title="Text To Image" />
                 <Divider />
                 <CardContent>
                     <Grid container spacing={3}>
@@ -76,6 +69,6 @@ export function TextToImagePrompt() {
                         </Grid>
                     </Grid>
                 </CardContent>
-        </form>
+        </Card>
     )
 }
