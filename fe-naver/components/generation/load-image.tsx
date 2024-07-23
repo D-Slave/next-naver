@@ -59,8 +59,8 @@ export default function LoadImage() {
                     </Grid>
                     <Grid md={10} sm={6} xs={12}>
                         <ImageList sx={{
-                            width: 500,
-                            height: 500}} cols={1}>
+                            width: 300,
+                            height: 300}} cols={1}>
                             {images.map((image, index) => (
                                 <ImageListItem key={image}>
                                     <img

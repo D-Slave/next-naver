@@ -23,12 +23,9 @@ const checkPoint = [
     { value : 'Japan', label: 'Japan'},
 ] as const;
 
-const loraList = [
-    {value: 'fantasy', label: 'fantasy'},
-    {value: 'china', label: 'china'},
-] as const;
 
 export function TextToImagePrompt() {
+
     return (
         <Card>
                 <CardHeader title="Text To Image" />
@@ -50,6 +47,7 @@ export function TextToImagePrompt() {
                         <Grid md={5} sm={5} xs={12}>
                             <TextField
                                 id="Positive"
+                                name="Positive"
                                 label="Positive"
                                 fullWidth
                                 multiline
@@ -60,6 +58,7 @@ export function TextToImagePrompt() {
                         <Grid md={5} sm={5} xs={12}>
                             <TextField
                                 id="Negative"
+                                name="Negative"
                                 fullWidth
                                 label="Negative"
                                 multiline
@@ -69,6 +68,9 @@ export function TextToImagePrompt() {
                         </Grid>
                     </Grid>
                 </CardContent>
+                <CardActions sx={{ justifyContent: 'flex-end' }}>
+                    <Button variant="contained" type="submit">Generation</Button>
+                </CardActions>
         </Card>
     )
 }
